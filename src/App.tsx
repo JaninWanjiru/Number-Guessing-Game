@@ -1,12 +1,17 @@
+import { useReducer } from "react";
+import gameReducer from "./reducers/gameReducer";
 import "./App.css";
 
 function Game() {
-  const newGameBtnDisabled = false;
-  const inputReadOnly = false;
-  const guessBtnDisabled = false;
-  const numTrials = 10;
-  const feedback = "New number generated, take a guess.";
-  const playerGuess = "";
+  const [state, dispatch] = useReducer(gameReducer, {
+  newGameBtnDisabled: false,
+  inputReadOnly: true,
+  guessBtnDisabled: true,
+  numTrials: 0,
+  feedback: null,
+  secretNumber: null,
+  playerGuess: "",
+  });
 
   return (
     <div className="game-container">
@@ -16,26 +21,34 @@ function Game() {
         </h2>
         <button
           className="new-game-btn"
-          disabled={newGameBtnDisabled}>
+          disabled={state.newGameBtnDisabled}
+          onClick={() => dispatch({ type: "NEW_GAME" })}>
           New Game
         </button>
       </header>
 
       <form className="game-form">
         <h2 className="trials-count">
-          {numTrials} trials remaining
+          {state.numTrials} trials remaining
         </h2>
         <input
           type="number"
           placeholder="00"
-          readOnly={inputReadOnly}
-          value={playerGuess}
+          readOnly={state.inputReadOnly}
+          value={state.playerGuess}
+          onChange={(e) =>
+            dispatch({
+              type: "UPDATE_PLAYER_GUESS",
+              payload: e.target.value,
+            })
+          }
         />
-        {feedback && <h2 className="game-result">{feedback}</h2>}
+        {state.feedback && <h2 className="game-result">{state.feedback}</h2>}
         <button
           className="guess-btn"
           type="button"
-          disabled={guessBtnDisabled}
+          disabled={state.guessBtnDisabled}
+          onClick={() => dispatch({ type: "PLAYER_GUESS", payload: state.playerGuess })}
         >
           Guess
         </button>

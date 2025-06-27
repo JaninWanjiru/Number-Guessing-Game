@@ -12,7 +12,7 @@ html {
   --color1: #fafafa;
   --color2: #fff;
   --color3: #2e2e2e;
-  --color4: #4c4b4b;
+  --color4: #cac1c1;
   --color5: #ccc;
 }
 
@@ -62,7 +62,7 @@ body {
 
 .new-game-btn:disabled,
 .guess-btn:disabled {
-  background-color: var(--color3);
+  background-color: var(--color4);
   cursor: not-allowed;
 }
 
