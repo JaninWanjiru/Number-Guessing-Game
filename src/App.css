@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --color1: #fafafa;
+  --color2: #fff;
+  --color3: #2e2e2e;
+  --color4: #4c4b4b;
+  --color5: #ccc;
+}
+
+body {
+  font-family: "Press Start 2P", system-ui;
+  padding: 2rem;
+  background-color: var(--color1);
+}
+
+.game-container {
+  max-width: 50rem;
+  margin: 3rem auto;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+  background-color: var(--color2);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-instruction {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.new-game-btn,
+.guess-btn {
+  background-color: var(--color3);
+  color: var(--color2);
+  font-weight: bold;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+}
+
+.new-game-btn:hover,
+.guess-btn:hover {
+  background-color: var(--color4);
+}
+
+.new-game-btn:disabled,
+.guess-btn:disabled {
+  background-color: var(--color3);
+  cursor: not-allowed;
+}
+
+.game-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.6rem;
+}
+
+.trials-count {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 2rem auto;
+}
+
+input[type="number"] {
+  width: 100px;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+  border: 0.2rem solid var(--color5);
+  border-radius: 0.6rem;
+  outline: none;
+}
+
+input[type="number"]:focus {
+  border-color: var(--color3);
+}
+
+.game-result {
+  font-size: 1.1rem;
+  margin: 2rem auto;
+}
+
+.guess-btn {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 31.25rem) {
+  .game-container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .game-instruction {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+
+  input[type="number"] {
+    width: 8rem;
+    font-size: 1.2rem;
+  }
+
+  .new-game-btn,
+  .guess-btn {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .game-result {
+    font-size: 0.8rem;
+  }
+}
